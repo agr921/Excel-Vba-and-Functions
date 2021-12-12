@@ -1,0 +1,33 @@
+Public Function MaxIf(myRange1 As Range, LowerLimit As Double, UpperLimit As Double) As Double
+
+Dim OneCell As Range
+Dim myArray1() As Double
+Dim x As Integer
+Dim y As Integer
+Dim RangeCells As Integer
+Dim MyCount As Integer
+
+RangeCells = myRange1.Cells.Count
+ReDim myArray1(RangeCells)
+Dim iArraySize As Integer
+iArraySize = UBound(myArray1)
+
+For Each OneCell In myRange1.Cells
+        If OneCell.Value > LowerLimit And OneCell.Value < UpperLimit Then
+        myArray1(x) = OneCell.Value
+        Else
+        myArray1(x) = 0
+        End If
+    x = x + 1
+Next OneCell
+
+MaxIf = myArray1(0)
+    For x = LBound(myArray1) + 1 To UBound(myArray1)
+    y = x + 1
+        If myArray1(x) > MaxIf Then
+            MaxIf = myArray1(x)
+        End If
+    MaxIf = MaxIf
+    Next x
+    
+End Function
